@@ -10,15 +10,15 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header><a href="./index.html"> <img src="assets/images/logo.png" class="logo" /></a>
+    <header><a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="logo fisheye"/></a>
      
     </header>
     <main id="main">
-      <div class="photograph-header">
+      <section class="photograph-header">
         <div class="photographer-contact">
-          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+          <button class="contact_button" onclick="displayModal()" aria-label="bouton d'ouverture du formulaire de contact">Contactez-moi</button>
         </div>
-      </div>
+      </section>
        <!-- filtrage -->
       <div class="filters">
       <h3>Trier par</h3>        
@@ -58,11 +58,11 @@
 			<div class="modal">
 				<header>
           <div class="header-form">
-<h2>Contactez-moi</h2>
+            <h2>Contactez-moi</h2>
           </div>
           
           <button class="close-modal">
-            <img src="assets/icons/close.svg" />
+            <img src="assets/icons/close.svg" aria-label="bouton de fermeture du formulaire" />
           </button> 
 
         </header>
@@ -95,7 +95,7 @@
     <script src="scripts/templates/photographer.js"></script>
     <script src="scripts/templates/media.js"></script>
     <script src="scripts/utils/totalLikes.js"></script>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
   </body>
 </html>

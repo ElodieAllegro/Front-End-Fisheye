@@ -317,7 +317,7 @@ form textarea {
     height: 550px;
     object-fit: cover;
     display: block;
-    border: 1px solid  black;
+   
 }
 
 .gallery-content {
@@ -377,7 +377,7 @@ form textarea {
         height: 400px;
         object-fit: cover;
         display: block;
-        border: 1px solid  black;
+       
     }
     
     .gallery-content {

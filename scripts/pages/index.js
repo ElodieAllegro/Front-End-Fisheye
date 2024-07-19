@@ -1,64 +1,58 @@
-    async function getPhotographers() {
-        const response = await fetch('../data/photographers.json')
-        const data = await response.json()
-        return ({photographers: data.photographers})
-    }
+/*global photographerTemplate*/
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+async function getPhotographers() {
+  const response = await fetch("data/photographers.json");
+  const data = await response.json();
+  return { photographers: data.photographers };
+}
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerTemplate(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
+async function displayData(photographers) {
+  const photographersSection = document.querySelector(".photographer_section");
 
-    
-            //element link
-            const linkElement = document.createElement("a");
-            linkElement.setAttribute("href", `photographer.html?id=${photographer.id}`);
-            linkElement.appendChild(userCardDOM);
+  photographers.forEach((photographer) => {
+    const photographerModel = photographerTemplate(photographer);
+    const userCardDOM = photographerModel.getUserCardDOM();
 
+    // Element link
+    const linkElement = document.createElement("a");
+    linkElement.setAttribute("href", `photographer.html?id=${photographer.id}`);
+    linkElement.setAttribute(
+      "aria-label",
+      `Voir la page de detail du photographe ${photographer.name} photographe à ${photographer.city}, ${photographer.country} tarif ${photographer.price}euro /jour`
+    );
+    linkElement.appendChild(userCardDOM);
 
-            //element location 
-            const locationInfo = document.createElement("div");
-            locationInfo.classList.add("location_info");
+    // Element location
+    const locationInfo = document.createElement("section");
+    locationInfo.classList.add("location_info");
+    const locationElement = document.createElement("h4");
+    locationElement.textContent = `${photographer.city}, ${photographer.country}`;
+    locationInfo.appendChild(locationElement);
+    userCardDOM.appendChild(locationInfo);
 
-            const locationElement = document.createElement("h4");
-            locationElement.textContent = `${photographer.city}, ${photographer.country}`;
+    // Element tagline
+    const taglineInfo = document.createElement("section");
+    taglineInfo.classList.add("tagline_info");
+    const taglineElement = document.createElement("p");
+    taglineElement.textContent = photographer.tagline;
+    taglineInfo.appendChild(taglineElement);
+    userCardDOM.appendChild(taglineInfo);
 
-            locationInfo.appendChild(locationElement);
-            userCardDOM.appendChild(locationInfo);
+    // Element price
+    const priceInfo = document.createElement("section");
+    priceInfo.classList.add("price_info");
+    const priceElement = document.createElement("p");
+    priceElement.textContent = `${photographer.price}€/jour`;
+    priceInfo.appendChild(priceElement);
+    userCardDOM.appendChild(priceInfo);
+    photographersSection.appendChild(linkElement);
+  });
+}
 
-            //element tagline
-            const taglineInfo = document.createElement("div");
-            taglineInfo.classList.add("tagline_info");
+async function init() {
+  // Récupère les datas des photographes
+  const { photographers } = await getPhotographers();
+  displayData(photographers);
+}
 
-            const taglineElement = document.createElement("p");
-            taglineElement.textContent = photographer.tagline;
-
-            taglineInfo.appendChild(taglineElement);
-            userCardDOM.appendChild(taglineInfo);
-
-            //element price
-            const priceInfo = document.createElement("div");
-            priceInfo.classList.add("price_info");
-
-            const priceElement = document.createElement("p");
-            priceElement.textContent = photographer.price + "€/jour";
-
-            priceInfo.appendChild(priceElement);
-            userCardDOM.appendChild(priceInfo);
-
-           
-            
-            photographersSection.appendChild(linkElement);
-        });
-    }
-
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    }
-    
-    init();
-    
+init();

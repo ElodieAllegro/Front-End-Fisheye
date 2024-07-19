@@ -1,3 +1,6 @@
+/*global Media,countTotalLike*/
+/*exported displayGallery*/
+
 const displayGallery = (medias, lightboxOpen) => {
     const gallery = document.querySelector('.gallery');
     gallery.innerHTML = ''
@@ -8,12 +11,12 @@ const displayGallery = (medias, lightboxOpen) => {
 
         m.appendChild(mediaLink)
         
-        const mediaFactory = new Media(media);
+        const mediaFactory = new Media(media, {});
         const mediaHtml = mediaFactory.getHtml()
         mediaLink.appendChild(mediaHtml);
         gallery.appendChild(m);
         
-        // Création de la div sous la galerie
+        // Création de la div sous chaque media
         const divContent = document.createElement('div');
         divContent.classList.add('gallery-content');
         m.appendChild(divContent);

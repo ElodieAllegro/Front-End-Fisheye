@@ -1,3 +1,4 @@
+/*exported displayModal,closeModal,sendContactForm*/
 
 const modal = document.getElementById("contact_modal");
 const form = document.querySelector('.contact-form')
@@ -29,3 +30,15 @@ function sendContactForm(){
         console.table({'Prénom': firstname, 'Nom': lastname, 'Email': email, 'Message': message})
     })
 }
+
+// Fonction pour afficher les coordonnées du photographe dans le formulaire de contact
+const contactFormDetails = (photographer) => {
+
+    const modalHeader = document.querySelector('.header-form');
+
+    // Afficher le nom et prénom du photographe dans l'en-tête du formulaire de contact
+    const photographerNameElement = document.createElement('h3');
+    photographerNameElement.classList.add('photographer-name');
+    photographerNameElement.textContent = ` ${photographer.name}`;
+    modalHeader.appendChild(photographerNameElement);
+};
