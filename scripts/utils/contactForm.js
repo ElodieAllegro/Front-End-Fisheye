@@ -1,4 +1,4 @@
-/*exported displayModal,closeModal,sendContactForm*/
+/*exported displayModal,closeModal,sendContactForm,contactFormDetails*/
 
 const modal = document.getElementById("contact_modal");
 const form = document.querySelector('.contact-form')

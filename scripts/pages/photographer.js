@@ -1,4 +1,4 @@
-/*global Lightbox,displayGallery,displayProfil,countTotalLike,sendContactForm,closeModal*/
+/*global Lightbox,displayGallery,displayProfil,countTotalLike,sendContactForm,closeModal,contactFormDetails*/
 
 const parsedUrl = new URL(window.location.href);
 const id = parseInt(parsedUrl.searchParams.get("id"));

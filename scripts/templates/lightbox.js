@@ -46,11 +46,11 @@ class Lightbox {
         this.changeSlide()
         this.closeButton.focus()
     }
-
+    //fonction 
     close() {        
         this.lightbox.classList.remove('open')
     }
-
+    //fonction qui permet de changer de slide suivant
     next() {
         const nbSlides = document.querySelectorAll('.slide').length
         if(this.index === nbSlides - 1){
@@ -60,7 +60,7 @@ class Lightbox {
         }    
         this.changeSlide()
     }
-
+    //permet de changer de slide précédent
     previous() {
         const nbSlides = document.querySelectorAll('.slide').length
         if(this.index === 0){
@@ -70,7 +70,7 @@ class Lightbox {
         }        
         this.changeSlide()
     }
-
+    // permet de changer de slide calcule de la largeur et deplacement de la slide
     changeSlide(){
         const slide = document.querySelector('.slide')
         const slideWidth = slide.getBoundingClientRect().width
@@ -81,17 +81,18 @@ class Lightbox {
         const lightboxGallery = document.querySelector('.lightbox-gallery');
         lightboxGallery.innerHTML = ''
         medias.forEach((media) => {
-            const m = document.createElement('li');
-            m.classList.add('slide')
-
+            //creation du li
+            const mediaLi = document.createElement('li');
+            mediaLi.classList.add('slide')
+            //creation de la video ou de l'image avec la media factory
             const mediaFactory = new Media(media, {controls: true});
-            m.appendChild(mediaFactory.getHtml());
-            lightboxGallery.appendChild(m);
+            mediaLi.appendChild(mediaFactory.getHtml());
+            lightboxGallery.appendChild(mediaLi);
 
             // Création de la div sous la galerie
             const divContent = document.createElement('div');
             divContent.classList.add('gallery-content');
-            m.appendChild(divContent);
+            mediaLi.appendChild(divContent);
 
             // Titre de la photo
             const title = document.createElement('h2');
@@ -99,10 +100,7 @@ class Lightbox {
             title.innerText = media.title;
             divContent.appendChild(title);
 
-            return m;
+            return mediaLi;
         });
     }
-
-
-
 }

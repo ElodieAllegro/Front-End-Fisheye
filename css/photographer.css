@@ -222,6 +222,7 @@ form div {
     border: none;
     background-color: transparent;
     color:#901C1C;
+    order: 3;
 }
 
 .close {
